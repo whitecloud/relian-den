@@ -50,14 +50,14 @@ export interface Item {
   type: string; // page, detail, link
   size: string; // large, medium, small
   iconUrl: string;
-  shortDescription: string;
 
   // user stuff
   favorites: string[]; // userIds that added this to their favs
 
   // optional
   url?: string; // used for links
-  color: string; // hex value
+  color?: string; // hex value
+  shortDescription?: string; // only makes sense for a medium or large item
   allowComments?: boolean; // only makes sense for a detail view
   longDescription?: string; // only makes sense for a detail view
 
