@@ -7,10 +7,11 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <den-page 
-      [page]="currentPage"
-      *ngIf="currentPage">
+  <div class="home-container">
+    <den-favorites-list></den-favorites-list>
+    <den-page
+      [page]="currentPage">
     </den-page>
+    <den-activity-list></den-activity-list>
   </div>
 </ion-content>

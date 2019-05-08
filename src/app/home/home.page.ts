@@ -18,7 +18,6 @@ export class HomePage {
     // set the current page to the home page when we start
     this.$pages = this.pagesService.getPage('home').subscribe(homePage => {
       this.currentPage = homePage;
-      console.log(homePage);
     });
   }
 

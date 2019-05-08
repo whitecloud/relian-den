@@ -1,3 +1,8 @@
-<div class="page-container" *ngIf="page">
-  <div class="page-title">{{ page.title }}</div>
+<div class="page-container">
+  <div *ngIf="page; else loading">
+    <div class="page-title">{{ page.title }}</div>
+  </div>
+  <ng-template #loading>
+    <ion-spinner></ion-spinner>
+  </ng-template>
 </div>

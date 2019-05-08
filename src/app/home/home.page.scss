@@ -1,1 +1,15 @@
+.home-container {
+  display: flex;
+  justify-content: center;
 
+  den-favorites-list,
+  den-activity-list {
+    min-width: 200px;
+    width: 300px;
+    background: #ddd;
+  }
+}
+
+@media(max-width: 1199px) {
+  
+}
