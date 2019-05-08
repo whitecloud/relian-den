@@ -1,1 +1,4 @@
-<den-favorite-icon [isFavorite]="isFavorite"></den-favorite-icon>
+<den-favorite-icon
+        (click)="toggleFavorite()"
+        [isFavorite]="isFavorite">
+</den-favorite-icon>

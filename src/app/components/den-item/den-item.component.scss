@@ -12,9 +12,12 @@
   }
 }
 
+img {
+  cursor: pointer;
+}
+
 .item-container {
   text-align: center;
-  cursor: pointer;
 }
 
 .item-icon {
@@ -26,6 +29,7 @@ den-favorite-item {
   position: absolute;
   right: 5px;
   bottom: 5px;
+  cursor: pointer;
 }
 
 .link {

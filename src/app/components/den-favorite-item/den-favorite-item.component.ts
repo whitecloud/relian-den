@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Item} from "../../types";
-import {ItemsService} from "../../services/items.service";
+import {Item} from '../../types';
+import {ItemsService} from '../../services/items.service';
 
 @Component({
   selector: 'den-favorite-item',
@@ -18,9 +18,19 @@ export class DenFavoriteItemComponent implements OnInit {
 
   ngOnInit() {}
 
+  toggleFavorite(){
+    if(this.isFavorite){
+     this.item.favorites.splice(this.item.favorites.indexOf("Matt"),1);
+    } else {
+      this.item.favorites.push("Matt");
+    }
+    this.itemsService.updateItem(this.item,this.item.id);
+    console.log('clicked');
+  }
+
   ngOnChanges(changes: any){
     if(this.item){
-      if(this.item.favorites.includes("Matt")){
+      if(this.item.favorites.includes('Matt')){
         this.isFavorite = true;
       } else {
         this.isFavorite = false;

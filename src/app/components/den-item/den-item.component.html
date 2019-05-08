@@ -1,8 +1,8 @@
-<div class="item-container {{item.size}}" (click)="itemClicked(item)">
+<div class="item-container {{item.size}}">
     {{item.title}}
     <ion-card class="item-icon">
         <ion-icon class="link" *ngIf="item.type =='link'" name="share-alt"></ion-icon>
-        <img [src]="item.iconUrl"/>
+        <img (click)="itemClicked(item)" [src]="item.iconUrl"/>
         <den-favorite-item [item]="item"></den-favorite-item>
     </ion-card>
 </div>
