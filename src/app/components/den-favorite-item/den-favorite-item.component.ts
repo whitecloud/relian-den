@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from '../../types';
 import {ItemsService} from '../../services/items.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'den-favorite-item',
@@ -13,24 +14,30 @@ export class DenFavoriteItemComponent implements OnInit {
   isFavorite: boolean;
 
   constructor(
-      private itemsService: ItemsService
+    private itemsService: ItemsService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {}
 
   toggleFavorite(){
-    if(this.isFavorite){
-     this.item.favorites.splice(this.item.favorites.indexOf("Matt"),1);
-    } else {
-      this.item.favorites.push("Matt");
+    if (this.userService.user) {
+      const userId = this.userService.user.id;
+
+      if (this.isFavorite) {
+        this.item.favorites.splice(this.item.favorites.indexOf(userId), 1);
+      } else {
+        this.item.favorites.push(userId);
+      }
+      this.itemsService.updateItem({favorites: this.item.favorites}, this.item.id);
     }
-    this.itemsService.updateItem(this.item,this.item.id);
-    console.log('clicked');
   }
 
   ngOnChanges(changes: any){
-    if(this.item){
-      if(this.item.favorites.includes('Matt')){
+    if (this.item && this.userService.user) {
+      const userId = this.userService.user.id;
+
+      if(this.item.favorites.includes(userId)) {
         this.isFavorite = true;
       } else {
         this.isFavorite = false;

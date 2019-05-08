@@ -22,9 +22,9 @@ export class ItemsService {
     return this.afs.collection('items').add(item);
   }
 
-  updateItem(partialItem: any, itemId: string){
-    return this.afs.collection('items').doc(itemId)
-        .update(partialItem);
+  updateItem(partialItem: any, itemId: string) {
+    console.log(partialItem, itemId);
+    return this.afs.collection('items').doc(itemId).update(partialItem);
   }
 
   getItem(itemId: string): Observable<Item> {

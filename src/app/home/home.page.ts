@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { PagesService } from '../services/pages.service';
 import { Page } from '../types';
-import { ModalController } from '@ionic/angular';
+import { ModalController, PopoverController } from '@ionic/angular';
 import { AddItemModalPage } from '../add-item-modal/add-item-modal.page';
+import { ProfilePopoverPage } from '../profile-popover/profile-popover.page';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,9 @@ export class HomePage {
 
   constructor(
     private pagesService: PagesService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private popoverController: PopoverController,
+    private userService: UserService
   ) {
     // set the current page to the home page when we start
     this.$pages = this.pagesService.getPage('home').subscribe(homePage => {
@@ -35,8 +39,20 @@ export class HomePage {
         currentPage: this.currentPage
       }
     });
-
     modal.present();
+  }
+
+  /**
+   * Present the profile modal
+   * @param ev 
+   */
+  async showProfilePopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: ProfilePopoverPage,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 
 }
