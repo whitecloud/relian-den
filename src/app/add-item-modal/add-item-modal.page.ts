@@ -71,7 +71,7 @@ export class AddItemModalPage implements OnInit {
   }
 
   addItem() {
-    let item = _.pick(this.newItem, ['categoryId', 'title', 'type', 'size', 'iconUrl', 'favorites']);
+    let item: any = _.pick(this.newItem, ['categoryId', 'title', 'type', 'size', 'iconUrl', 'favorites']);
     item.type = item.type.title.toLowerCase();
 
     if (item.type === 'link') {
