@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Page } from '@ionic/core';
+import { Category, Page } from 'src/app/types';
+import { CategoriesService } from 'src/app/services/categories.service';
 
 @Component({
   selector: 'den-page',
@@ -9,9 +10,20 @@ import { Page } from '@ionic/core';
 export class DenPageComponent implements OnInit {
 
   @Input() page: Page;
+  categories: Category[];
+  $categories: any;
 
-  constructor() { }
+  constructor(
+    private categoryService: CategoriesService
+  ) { }
 
   ngOnInit() {}
-
+  
+  ngOnChanges(changes: any){
+    if(this.page && this.page.id){
+      this.$categories = this.categoryService.getCategories(this.page.id).subscribe(pageCategories => {
+        this.categories = pageCategories;
+      });
+    }
+  }
 }

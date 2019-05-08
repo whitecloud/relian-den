@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Category, Item } from 'src/app/types';
 
 @Component({
   selector: 'den-category',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DenCategoryComponent implements OnInit {
 
+  @Input() category: Category;
+  items: Item[];
+  $items: any;
   constructor() { }
 
   ngOnInit() {}
