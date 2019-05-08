@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Item} from '../../types';
-import {ItemsService} from '../../services/items.service';
-import { UserService } from 'src/app/services/user.service';
+import {Item} from "../../types";
 
 @Component({
   selector: 'den-favorite-item',
@@ -10,38 +8,22 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class DenFavoriteItemComponent implements OnInit {
 
+  //TODO this class is a dupe of den-item
   @Input() item: Item;
-  isFavorite: boolean;
 
-  constructor(
-    private itemsService: ItemsService,
-    private userService: UserService
-  ) { }
+  constructor() { }
 
   ngOnInit() {}
 
-  toggleFavorite() {
-    if (this.userService.user) {
-      const userId = this.userService.user.id;
-
-      if (this.isFavorite) {
-        this.item.favorites.splice(this.item.favorites.indexOf(userId), 1);
-      } else {
-        this.item.favorites.push(userId);
-      }
-      this.itemsService.updateItem({favorites: this.item.favorites}, this.item.id);
+  itemClicked(item: Item) {
+    console.log(item);
+    switch (item.type) {
+      case 'page': console.log('page item clicked'); return;
+      case 'detail': console.log('detail item clicked'); break;
+      case 'link': window.open(item.url); break;
+      default: console.log("no idea what was clicked: "); return;
     }
-  }
 
-  ngOnChanges(changes: any){
-    if (this.item && this.userService.user) {
-      const userId = this.userService.user.id;
 
-      if(this.item.favorites.includes(userId)) {
-        this.isFavorite = true;
-      } else {
-        this.isFavorite = false;
-      }
-    }
   }
 }

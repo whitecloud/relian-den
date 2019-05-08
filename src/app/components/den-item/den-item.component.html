@@ -3,7 +3,7 @@
     <ion-card class="item-icon">
         <ion-icon class="link" *ngIf="item.type =='link'" name="share-alt"></ion-icon>
         <img (click)="itemClicked(item)" [src]="item.iconUrl"/>
-        <den-favorite-item [item]="item"></den-favorite-item>
+        <den-favorite-icon [item]="item"></den-favorite-icon>
     </ion-card>
 </div>
 

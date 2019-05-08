@@ -1,4 +1,8 @@
-<den-favorite-icon
-        (click)="toggleFavorite()"
-        [isFavorite]="isFavorite">
-</den-favorite-icon>
+<div class="item-container">
+    {{item.title}}
+    <ion-card class="item-icon">
+        <ion-icon class="link" *ngIf="item.type =='link'" name="share-alt"></ion-icon>
+        <img (click)="itemClicked(item)" [src]="item.iconUrl"/>
+    </ion-card>
+</div>
+
