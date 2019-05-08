@@ -31,8 +31,10 @@ export class ItemsService {
       .pipe(map(this.mapItems.bind(this)));
   }
 
-  getItems(): Observable<Item[]> {
-    return this.afs.collection('items')
+  getItems(categoryId): Observable<Item[]> {
+    return this.afs.collection('items', ref => {
+      return ref.where('categoryId', '==', categoryId);
+    })
       .snapshotChanges()
       .pipe (
         map(actions => {

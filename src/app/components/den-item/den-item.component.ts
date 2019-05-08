@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Item} from "../../types";
 
 @Component({
   selector: 'den-item',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./den-item.component.scss'],
 })
 export class DenItemComponent implements OnInit {
+
+  @Input() item: Item;
 
   constructor() { }
 
