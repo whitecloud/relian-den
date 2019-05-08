@@ -20,19 +20,19 @@ export class PagesService {
       .pipe(map(this.mapPages.bind(this)));
   }
 
-  getPages() {
+  getPages(): Observable<Page[]> {
     return this.afs.collection('pages')
-    .snapshotChanges()
-    .pipe (
-      map(actions => {
-        return _(actions)
-          .map(this.mapPages.bind(this))
-          .value();
-      })
-    );
+      .snapshotChanges()
+      .pipe (
+        map(actions => {
+          return _(actions)
+            .map(this.mapPages.bind(this))
+            .value();
+        })
+      );
   }
 
-  mapPages(page) {
+  mapPages(page): Page {
     const doc = page.payload.doc || page.payload;
 
     const data = doc.data();
