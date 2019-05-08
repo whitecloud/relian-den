@@ -1,3 +1,4 @@
 <p>
-  {{activityItem.createdBy}} {{ activityItem.actionText }} {{activityItem.createdAt}}
+  {{ activityItem.actionText }} {{activityItem.createdAt}}
+  <den-list-item *ngIf="activityItem.item" [item]="activityItem.item"></den-list-item>
 </p>
