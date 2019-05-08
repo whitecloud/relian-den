@@ -20,9 +20,9 @@ export class DenFavoriteItemComponent implements OnInit {
 
   toggleFavorite(){
     if(this.isFavorite){
-     this.item.favorites.splice(this.item.favorites.indexOf("Matt"),1);
+     this.item.favorites.splice(this.item.favorites.indexOf('Matt'),1);
     } else {
-      this.item.favorites.push("Matt");
+      this.item.favorites.push('Matt');
     }
     this.itemsService.updateItem(this.item,this.item.id);
   }
