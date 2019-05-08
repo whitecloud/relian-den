@@ -22,6 +22,11 @@ export class ItemsService {
     return this.afs.collection('items').add(item);
   }
 
+  updateItem(partialItem: any, itemId: string){
+    return this.afs.collection('items').doc(itemId)
+        .update(partialItem);
+  }
+
   getItem(itemId: string): Observable<Item> {
     return this.afs.collection('items').doc(itemId)
       .snapshotChanges()
@@ -40,6 +45,20 @@ export class ItemsService {
             .value();
         })
       );
+  }
+
+  getFavoriteItems(userId): Observable<Item[]> {
+    return this.afs.collection('items', ref => {
+      return ref.where('favorites', 'array-contains', userId);
+    })
+        .snapshotChanges()
+        .pipe (
+            map(actions => {
+              return _(actions)
+                  .map(this.mapItems.bind(this))
+                  .value();
+            })
+        );
   }
 
   mapItems(item): Item {

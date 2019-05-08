@@ -1,9 +1,15 @@
 .small {
-  max-width: 75px;
+  max-width: 90px;
+  img {
+    width: 70%;
+  }
 }
 
 .large {
-  max-width: 150px;
+  max-width: 165px;
+  img {
+    width: 85%;
+  }
 }
 
 .item-container {
@@ -14,4 +20,17 @@
 .item-icon {
   display: inline-block;
   background: white;
+}
+
+den-favorite-item {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+.link {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #3880ff;
 }
