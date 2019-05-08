@@ -44,6 +44,6 @@ export class PagesService {
 
   sanitize(incomingPage: Page): Page {
     let page = _.clone(incomingPage);
-    return _.omit(page, ['exists', 'id']);
+    return _.omit(page, ['exists', 'id']) as Page;
   }
 }
