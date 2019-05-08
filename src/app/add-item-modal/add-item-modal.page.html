@@ -17,9 +17,21 @@
     {{ newItem.type.description }}
   </p>
 
+  <!-- choose the type -->
+  Category
+  <ion-segment [value]="newItem.categoryId">
+    <ion-segment-button [value]="category.id" *ngFor="let category of categories" (click)="selectCategory(category)">
+      <ion-label>{{ category.title }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
   <!-- choose the size -->
   <div class="size-container">
     <ion-label>Size</ion-label>
+
+    <p>
+      hardcoded to small :)
+    </p>
   </div>
 
   <!-- title -->
