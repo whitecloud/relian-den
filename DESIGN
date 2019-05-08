@@ -1,0 +1,95 @@
+///////////////////////////////////
+////////// COLLECTIONS ////////////
+///////////////////////////////////
+
+/users - store User objects
+
+/pages - store Page objects
+
+/categories - store Category objects
+
+/items - store Item objects
+  /messages - store Message objects, subcollection on /items
+
+/activity - store ActivityItem objects
+
+/search - store SearchItem objects
+
+
+
+
+
+///////////////////////////////////
+////////// COMPONENTS /////////////
+///////////////////////////////////
+
+<den-page
+  page="page"
+></den-page>
+
+<den-category
+  category="category"
+></den-category>
+
+<den-item
+  item="item"
+></den-item>
+
+<den-favorite-icon
+  userId="user.id"
+  itemFavorites="item.favorites"
+></den-favorite-icon>
+
+<den-favorites-list></den-favorites-list>
+
+<den-favorite-item
+  item="item"
+></den-favorite-item>
+
+<den-activity-list></den-activity-list>
+
+<den-activity-item
+  item="activityItem"
+></den-activity-item>
+
+<den-message
+  message="message"
+><den-message>
+
+
+
+
+
+///////////////////////////////////
+/////////// SERVICES //////////////
+///////////////////////////////////
+
+auth.service.ts
+
+pages.service.ts
+
+categories.service.ts
+
+items.service.ts
+
+messages.service.ts
+
+activity.service.ts
+
+search.service.ts
+
+history.service.ts
+
+
+
+
+
+///////////////////////////////////
+///////////// PAGES ///////////////
+///////////////////////////////////
+
+welcome.page.ts
+
+home.page.ts
+
+detail.page.ts

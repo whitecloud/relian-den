@@ -1,5 +1,7 @@
 {
   "name": "relian-den",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
