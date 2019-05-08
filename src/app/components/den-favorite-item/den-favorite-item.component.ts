@@ -20,7 +20,7 @@ export class DenFavoriteItemComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggleFavorite(){
+  toggleFavorite() {
     if (this.userService.user) {
       const userId = this.userService.user.id;
 
