@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Item Modal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- choose the type -->
+  <ion-segment [value]="newItem.type" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="page">
+      <ion-label>Page</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="detail">
+      <ion-label>Detail</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="link">
+      <ion-label>Link</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <!-- choose the size -->
+  <div class="size-container">
+    <ion-label>Size</ion-label>
+  </div>
+
+  <!-- title -->
+  <div class="modal-input">
+    <label>Title</label>
+    <input type="text" [(ngModel)]="newItem.title">
+  </div>
+
+  <!-- icon url -->
+  <div class="modal-input">
+    <label>Icon Url</label>
+    <input type="text" [(ngModel)]="newItem.title">
+  </div>
+
+</ion-content>
