@@ -1,3 +1,9 @@
-<p>
-  {{item.title}}
-</p>
+<div class="item-container">
+    {{item.title}}
+    <ion-card class="{{item.size}} item-icon">
+        <img [src]="item.iconUrl"/>
+    </ion-card>
+</div>
+
+
+
