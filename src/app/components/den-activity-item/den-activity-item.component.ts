@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivityItem} from "../../types";
 
 @Component({
   selector: 'den-activity-item',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./den-activity-item.component.scss'],
 })
 export class DenActivityItemComponent implements OnInit {
+
+  @Input() activityItem: ActivityItem;
 
   constructor() { }
 

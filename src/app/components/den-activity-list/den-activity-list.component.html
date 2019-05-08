@@ -1,6 +1,8 @@
 <div class="activity-container">
   <div class="activity-title">Activity</div>
-  <div class="empty-message">
+  <div *ngIf="activityList.length === 0" class="empty-message">
     Nothing has happened yet
   </div>
+  <den-activity-item [activityItem]="activity" *ngFor="let activity of activityList">
+  </den-activity-item>
 </div>
