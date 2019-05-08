@@ -1,6 +1,11 @@
 <div class="favorites-container">
-  <div class="favorites-title">Favorites</div>
+  <div class="favorites-title">
+    <ion-icon class="heart" name="heart"></ion-icon>
+    Favorites</div>
   <div class="empty-message">
     Add something to your favorites by clicking the heart
+  </div>
+  <div *ngFor="let item of items">
+    <den-item [item]="item"></den-item>
   </div>
 </div>

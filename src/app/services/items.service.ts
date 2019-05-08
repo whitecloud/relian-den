@@ -23,7 +23,6 @@ export class ItemsService {
   }
 
   updateItem(partialItem: any, itemId: string) {
-    console.log(partialItem, itemId);
     return this.afs.collection('items').doc(itemId).update(partialItem);
   }
 
