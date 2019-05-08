@@ -17,7 +17,6 @@ export class DenActivityListComponent implements OnInit {
   {
     this.as.getActivities().subscribe(list => {
     this.activityList = list;
-    console.log(list);
   }
   );}
 
