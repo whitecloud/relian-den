@@ -1,0 +1,18 @@
+ion-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  div {
+    //float: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
