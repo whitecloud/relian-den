@@ -20,8 +20,10 @@ export class CategoriesService {
       .pipe(map(this.mapCategories.bind(this)));
   }
 
-  getCategories(): Observable<Category[]> {
-    return this.afs.collection('categories')
+  getCategories(pageId): Observable<Category[]> {
+    return this.afs.collection('categories', ref => {
+      return ref.where('pageId', '==', pageId);
+    })
       .snapshotChanges()
       .pipe (
         map(actions => {
