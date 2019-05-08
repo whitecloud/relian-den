@@ -19,8 +19,8 @@ export class DenPageComponent implements OnInit {
 
   ngOnInit() {}
   
-  ngOnChanges(changes: any){
-    if(this.page && this.page.id){
+  ngOnChanges(changes: any) {
+    if(this.page && this.page.id) {
       this.$categories = this.categoryService.getCategories(this.page.id).subscribe(pageCategories => {
         this.categories = pageCategories;
       });
