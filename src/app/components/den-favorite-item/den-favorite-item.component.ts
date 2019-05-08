@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Item} from "../../types";
+import {ItemsService} from "../../services/items.service";
 
 @Component({
   selector: 'den-favorite-item',
@@ -7,8 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DenFavoriteItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() item: Item;
+  isFavorite: boolean;
+
+  constructor(
+      private itemsService: ItemsService
+  ) { }
 
   ngOnInit() {}
 
+  ngOnChanges(changes: any){
+    if(this.item){
+      if(this.item.favorites.includes("Matt")){
+        this.isFavorite = true;
+      } else {
+        this.isFavorite = false;
+      }
+    }
+  }
 }

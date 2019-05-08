@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'den-favorite-icon',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./den-favorite-icon.component.scss'],
 })
 export class DenFavoriteIconComponent implements OnInit {
+
+  @Input() isFavorite: boolean;
 
   constructor() { }
 
