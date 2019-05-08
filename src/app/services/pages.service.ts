@@ -43,8 +43,7 @@ export class PagesService {
   }
 
   sanitize(incomingPage: Page): Page {
-    let league = _.clone(incomingPage);
-    league.playerIds = league.playerIds || [];
-    return _.omit(league, ['exists', 'id']);
+    let page = _.clone(incomingPage);
+    return _.omit(page, ['exists', 'id']);
   }
 }
