@@ -25,7 +25,6 @@ export class DenFavoriteItemComponent implements OnInit {
       this.item.favorites.push("Matt");
     }
     this.itemsService.updateItem(this.item,this.item.id);
-    console.log('clicked');
   }
 
   ngOnChanges(changes: any){
