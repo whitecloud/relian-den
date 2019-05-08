@@ -15,14 +15,11 @@ export class ItemsService {
   ) { 
   }
 
-  addItem(partialItem: any) {
+  addItem(item: any) {
+    item.createdAt = Date.now();
+    item.createdBy = 'anonId';
 
-    partialItem.createdAt = Date.now();
-    partialItem.createdBy = 'anonId';
-
-    return this.afs.collection('items').add({
-
-    })
+    return this.afs.collection('items').add(item);
   }
 
   getItem(itemId: string): Observable<Item> {
