@@ -11,7 +11,7 @@ import { DenFavoritesListComponent } from './den-favorites-list/den-favorites-li
 import { DenItemComponent } from './den-item/den-item.component';
 import { DenMessageComponent } from './den-message/den-message.component';
 import { DenPageComponent } from './den-page/den-page.component';
-import {DenListItemComponent} from "../componenets/den-list-item/den-list-item.component";
+import { DenListItemComponent } from './den-list-item/den-list-item.component';
 
 @NgModule({
   declarations: [
