@@ -1,5 +1,9 @@
 export interface User {
   name: string;
+
+  // client needs
+  id?: string;
+  exists?: boolean;
 }
 
 /**
@@ -12,6 +16,10 @@ export interface Page {
   // auth metadata
   createdAt: number; // unix timestamp
   createdBy: string; // userId
+
+  // client needs
+  id?: string;
+  exists?: boolean;
 }
 
 /**
@@ -25,6 +33,10 @@ export interface Category {
   // auth metadata
   createdAt: number; // unix timestamp
   createdBy: string; // userId
+
+  // client needs
+  id?: string;
+  exists?: boolean;
 }
 
 /**
@@ -52,6 +64,10 @@ export interface Item {
   // auth metadata
   createdAt: number; // unix timestamp
   createdBy: string; // userId
+
+  // client needs
+  id?: string;
+  exists?: boolean;
 }
 
 /**
@@ -67,6 +83,10 @@ export interface ActivityItem {
   // auth metadata
   createdAt: number; // unix timestamp
   createdBy: string; // userId
+
+  // client needs
+  id?: string;
+  exists?: boolean;
 }
 
 /**
@@ -79,6 +99,10 @@ export interface Message {
   // auth metadata
   createdAt: number; // unix timestamp
   createdBy: string; // userId
+
+  // client needs
+  id?: string;
+  exists?: boolean;
 }
 
 /**
@@ -87,4 +111,8 @@ export interface Message {
 export interface SearchItem {
   matches: string[]; // everything this item can match on 'array-contains'
   item: Item;
+
+  // client needs
+  id?: string;
+  exists?: boolean;
 }
