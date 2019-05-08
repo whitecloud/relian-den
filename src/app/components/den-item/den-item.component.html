@@ -1,6 +1,6 @@
-<div class="item-container">
+<div class="item-container {{item.size}}" (click)="itemClicked(item)">
     {{item.title}}
-    <ion-card class="{{item.size}} item-icon">
+    <ion-card class="item-icon">
         <img [src]="item.iconUrl"/>
     </ion-card>
 </div>
