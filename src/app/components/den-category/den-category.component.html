@@ -1,7 +1,9 @@
 <div>
   <div class="category-title">{{category.title}}</div>
-  <div *ngFor="let item of items">
-    <den-item [item]="item"></den-item>
+  <div class="item-container">
+    <div *ngFor="let item of items">
+      <den-item [item]="item"></den-item>
+    </div>
   </div>
 </div>
 
