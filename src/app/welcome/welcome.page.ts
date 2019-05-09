@@ -21,9 +21,16 @@ export class WelcomePage implements OnInit {
   }
 
   async login() {
-    this.loggingIn = true;
-    await this.userService.login(this.name);
-    this.navCtrl.navigateForward('/home');
+    if (this.validInput()) {
+      this.loggingIn = true;
+      await this.userService.login(this.name);
+      this.navCtrl.navigateForward('/home');
+      setTimeout(() => this.loggingIn = false, 1000);
+    }
+  }
+
+  validInput() {
+    return this.name.length > 3;
   }
 
 }
