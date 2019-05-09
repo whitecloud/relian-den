@@ -1,19 +1,38 @@
 .small {
   width: 90px;
-  img {
-    width: 70%;
+  ion-card{
+    height: 49px;
+    width: 70px;
+    .icon-container{
+      width: 49px;
+      height: 49px;
+    }
   }
 }
 
 .large {
   width: 165px;
-  img {
-    width: 85%;
+  ion-card {
+    height: 123px;
+    width: 145px;
+    .icon-container{
+      width: 123.25px;
+      height: 123px;
+    }
   }
 }
 
+.icon-container{
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
 img {
   cursor: pointer;
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: auto;
 }
 
 .item-container {
