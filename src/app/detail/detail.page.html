@@ -1,9 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Detail</ion-title>
-  </ion-toolbar>
-</ion-header>
+  <ion-header>
+    <ion-toolbar>
+      <ion-title *ngIf="item">{{item.title}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+  <ion-content>
+    <div *ngIf="item">
+      <div>
+        <img src="{{item.iconUrl}}"/>
+      </div>
+      <div *ngIf="item.description">{{item.description}}</div>
+      <div *ngIf="!item.description">Add a long description to see it show here</div>
+    </div>
+  </ion-content>
 
-</ion-content>
+
+
