@@ -1,4 +1,5 @@
 .home-container {
+  position: relative;
   display: flex;
   justify-content: center;
 
@@ -6,10 +7,50 @@
   den-activity-list {
     min-width: 200px;
     width: 300px;
-    background: #ddd;
+  }
+}
+
+@media(min-width: 1200px) {
+  .ion-tabs {
+    display: none;
   }
 }
 
 @media(max-width: 1199px) {
-  
+  ion-fab {
+    margin-bottom: 60px;
+  }
+
+  den-page,
+  den-favorites-list,
+  den-activity-list {
+    width: 100%;
+
+    &:not(.active) {
+      display: none;
+    }
+  }
+
+  ion-tab-button {
+    color: #7f7f7f;
+
+    ion-badge {
+      color: #fff;
+    }
+
+    &.active {
+      background: #eee;
+      color: #3880ff;
+    }
+  }
+
+  .ion-tabs {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .home-container {
+    margin-bottom: 50px;
+  }
 }

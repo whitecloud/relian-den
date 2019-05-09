@@ -16,6 +16,24 @@ export class HomePage {
   $pages: any;
   currentPage: Page;
 
+  tabs = [
+    {
+      title: 'Favorites',
+      icon: 'md-heart',
+      active: false
+    },
+    {
+      title: 'Home',
+      icon: 'md-home',
+      active: true
+    },
+    {
+      title: 'Activity',
+      icon: 'md-time',
+      active: false
+    }
+  ]
+
   constructor(
     private pagesService: PagesService,
     private modalController: ModalController,
@@ -55,4 +73,10 @@ export class HomePage {
     return await popover.present();
   }
 
+  selectTab(tab) {
+    for (const tab of this.tabs) {
+      tab.active = false;
+    }
+    tab.active = true;
+  }
 }
