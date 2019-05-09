@@ -1,57 +1,76 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Add Item Modal</ion-title>
+    <ion-title>New...</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" (click)="addItem()" [disabled]="!canSave()">
+        Save
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button color="danger" (click)="closeModal()">
+        Abandon
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <!-- choose the type -->
-  <ion-segment [value]="newItem.type.title">
-    <ion-segment-button [value]="type.title" *ngFor="let type of itemTypes" (click)="selectType(type)">
-      <ion-label>{{ type.title }}</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  <div class="modal-container">
 
-  <!-- type description -->
-  <p class="description-container">
-    {{ newItem.type.description }}
-  </p>
+    <!-- choose the type -->
+    <ion-segment [value]="newItem.type.title">
+      <ion-segment-button [value]="type.title" *ngFor="let type of itemTypes" (click)="selectType(type)">
+        <ion-label>{{ type.title }}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 
-  <!-- choose the type -->
-  Category
-  <ion-segment [value]="newItem.categoryId">
-    <ion-segment-button [value]="category.id" *ngFor="let category of categories" (click)="selectCategory(category)">
-      <ion-label>{{ category.title }}</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-
-  <!-- choose the size -->
-  <div class="size-container">
-    <ion-label>Size</ion-label>
-
-    <p>
-      hardcoded to small :)
+    <!-- type description -->
+    <p class="description-container">
+      {{ newItem.type.description }}
     </p>
+
+    <!-- choose the type -->
+    <div class="category-container">
+      <label>Category</label>
+      <ion-select [value]="newItem.categoryId">
+        <ion-select-option 
+          *ngFor="let category of categories"
+          [value]="category.id">
+          {{ category.title }}
+        </ion-select-option>
+      </ion-select>
+    </div>
+
+    <!-- choose the size -->
+    <div class="size-container">
+      <label>Size</label>
+      <div class="sizes-container">
+        <div 
+          *ngFor="let size of sizes" 
+          (click)="selectSize(size)"
+          [class]="size"
+          [ngClass]="{'active': newItem.size === size}">
+        </div>
+      </div>
+    </div>
+
+    <!-- title -->
+    <div class="modal-input">
+      <label>Title</label>
+      <input type="text" [(ngModel)]="newItem.title" placeholder="Cool Thing">
+    </div>
+
+    <!-- link -->
+    <div class="modal-input">
+      <label>Link</label>
+      <input type="text" [(ngModel)]="newItem.url" placeholder="https://link.to/cool/thing">
+    </div>
+
+    <!-- icon url -->
+    <div class="modal-input">
+      <label>Icon Url</label>
+      <input type="text" [(ngModel)]="newItem.iconUrl" placeholder="https://imgur.com/cool-icon-128">
+    </div>
+
   </div>
-
-  <!-- title -->
-  <div class="modal-input">
-    <label>Title</label>
-    <input type="text" [(ngModel)]="newItem.title" placeholder="Cool Thing">
-  </div>
-
-  <!-- link -->
-  <div class="modal-input">
-    <label>Link</label>
-    <input type="text" [(ngModel)]="newItem.url" placeholder="https://link.to/cool/thing">
-  </div>
-
-  <!-- icon url -->
-  <div class="modal-input">
-    <label>Icon Url</label>
-    <input type="text" [(ngModel)]="newItem.iconUrl" placeholder="https://imgur.com/cool-icon-128">
-  </div>
-
-  <ion-button (click)="addItem()">Add</ion-button>
-
 </ion-content>

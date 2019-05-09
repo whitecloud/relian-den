@@ -21,20 +21,6 @@
       margin-bottom: 40px;
     }
 
-    label {
-      margin-bottom: 8px;
-      width: 100%;
-      color: #7f7f7f;
-    }
-
-    input {
-      width: 100%;
-      border-radius: 5px;
-      padding: 8px;
-      border: 1px solid #ccc;
-      margin-bottom: 30px;
-    }
-
     button {
       width: 100%;
       background: #3f742d;
@@ -46,6 +32,10 @@
       &[disabled] {
         opacity: .5;
       }
+    }
+
+    input {
+      margin-bottom: 30px;
     }
   }
 }
