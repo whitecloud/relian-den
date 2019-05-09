@@ -5,6 +5,8 @@ import { Item } from '../types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
+import {PagesService} from "./pages.service";
+import {HistoryService} from "./history.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,9 @@ export class ItemsService {
 
   constructor(
     private afs: AngularFirestore,
-    private userService: UserService
+    private userService: UserService,
+    private pageService: PagesService,
+    private historyService: HistoryService
   ) { 
   }
 
@@ -75,5 +79,20 @@ export class ItemsService {
   sanitize(incomingItem: Item): Item {
     let item = _.clone(incomingItem);
     return _.omit(item, ['exists', 'id']) as Item;
+  }
+
+  handleClick(item: Item) {
+    switch (item.type) {
+      case 'page':
+        this.pageService.getPage(item.pageId).toPromise().then( page => {
+          this.historyService.push(this.pageService.mapPages(page));
+        });
+        console.log('page item clicked');
+
+        break;
+      case 'detail': console.log('detail item clicked'); break;
+      case 'link': window.open(item.url); break;
+      default: console.log("no idea what was clicked: "); return;
+    }
   }
 }
