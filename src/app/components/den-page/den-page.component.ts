@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Category, Page } from 'src/app/types';
 import { CategoriesService } from 'src/app/services/categories.service';
+import { HistoryService } from "../../services/history.service";
 
 @Component({
   selector: 'den-page',
@@ -14,7 +15,8 @@ export class DenPageComponent implements OnInit {
   $categories: any;
 
   constructor(
-    private categoryService: CategoriesService
+    private categoryService: CategoriesService,
+    private historyService: HistoryService
   ) { }
 
   ngOnInit() {}
@@ -25,6 +27,7 @@ export class DenPageComponent implements OnInit {
       this.$categories = this.categoryService.getCategories(this.page.id).subscribe(pageCategories => {
         this.categories = pageCategories;
       });
+      this.historyService.push(this.page)
     }
   }
 }
