@@ -9,17 +9,41 @@ export const itemsOnCreate = functions.firestore
   .document('items/{itemId}')
   .onCreate((doc, context) => {
 
-    const item : Item = doc.data() as Item;
+    const item: Item = doc.data() as Item;
 
     console.log('Setting up item: ' + item.title);
 
-    return db.collection('activities').add({
-      actionText: item.createdBy.name + ' created an item:',
-      item: item,
+    return new Promise(() => {
+      db.collection('activities').add({
+        actionText: item.createdBy.name + ' created an item:',
+        item: item,
 
-      // auth metadata
-      createdAt: Date.now(),
+        // auth metadata
+        createdAt: Date.now(),
+      })
+        .then(() => console.log('Done adding activity!'))
+        .catch(err => console.log(err));
+
+      db.collection('search').add({
+        matches: [...generateMatches(item.categoryId), ...generateMatches(item.title), ...generateMatches(item.description)],
+        item: item,
+
+        // auth metadata
+        createdAt: Date.now(),
+      })
+        .catch(err => console.log(err));
     })
-    .then(() => console.log('Done adding activity!'))
-    .catch(err => console.log(err));
+      .then(() => console.log('item:onCreate job finished'))
+      .catch(err => console.log(err));
   });
+
+function generateMatches(itemString: any) {
+  const matches: string[] = [];
+  if(!itemString) return matches;
+  for (let i = 0; i < itemString.length - 1; i++) {
+    for (let j = i + 1; j < itemString.length; j++) {
+      matches.push(itemString.slice(i, j));
+    }
+  }
+  return matches;
+}
