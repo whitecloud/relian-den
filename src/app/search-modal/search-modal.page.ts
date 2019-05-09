@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {SearchService} from "../services/search.service";
-import {Item} from "../types";
-import {map} from "rxjs/operators";
-import * as _ from "lodash";
-import {ItemsService} from "../services/items.service";
-import {Observable, Subscription} from "rxjs";
+import { SearchService } from '../services/search.service';
+import { Item } from '../types';
+import { Subscription } from 'rxjs';
+import * as _ from 'lodash';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search-modal',
@@ -18,7 +17,7 @@ export class SearchModalPage implements OnInit {
 
   constructor(
     public searchService: SearchService,
-    private itemService: ItemsService
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
@@ -26,13 +25,21 @@ export class SearchModalPage implements OnInit {
 
   setSearchViewItems($event) {
     const text = $event.detail.value;
-    if(this.$subscription) this.$subscription.unsubscribe();
-    if(!text) {
-      this.searchViewItems=[]
+    if (this.$subscription) {
+      this.$subscription.unsubscribe();
+    }
+    if (!text) {
+      this.searchViewItems = [];
     } else {
       this.$subscription = this.searchService.findItems($event.detail.value).subscribe(items => {
         this.searchViewItems = items;
       });
+    }
+  }
+
+  itemClicked(searchItem) {
+    if (['page','detail'].includes(searchItem.item.type)) {
+      this.modalCtrl.dismiss();
     }
   }
 

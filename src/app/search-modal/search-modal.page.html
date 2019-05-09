@@ -7,6 +7,10 @@
 
 <ion-content>
   <ion-list>
-    <den-list-item [item]="item" *ngFor="let item  of searchViewItems"></den-list-item>
+    <den-list-item
+      [item]="searchItem.item" 
+      *ngFor="let searchItem  of searchViewItems"
+      (click)="itemClicked(searchItem)">
+    </den-list-item>
   </ion-list>
 </ion-content>

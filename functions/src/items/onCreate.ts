@@ -10,6 +10,7 @@ export const itemsOnCreate = functions.firestore
   .onCreate((doc, context) => {
 
     const item: Item = doc.data() as Item;
+    item.id = doc.id;
 
     console.log('Setting up item: ' + item.title);
 
