@@ -2,7 +2,7 @@
   <div class="login-container">
     
     <form action="#" onsubmit="return false;" (ngSubmit)="login()" class="login-box">
-      <div class="title">Relian Den</div>
+      <img class="title" src="../../assets/relian-den4.png">
       <label>Name</label>
       <input name="name" [(ngModel)]="name" [disabled]="loggingIn">
       <button value="Log In" [disabled]="!validInput() || loggingIn" (click)="login()">Log In</button>
