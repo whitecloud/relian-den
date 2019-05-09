@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Item} from "../../types";
+import {ItemsService} from "../../services/items.service";
 
 @Component({
   selector: 'den-item',
@@ -10,18 +11,12 @@ export class DenItemComponent implements OnInit {
 
   @Input() item: Item;
 
-  constructor() { }
+  constructor(public itemService: ItemsService) { }
 
   ngOnInit() {}
 
   itemClicked(item: Item) {
-    switch (item.type) {
-      case 'page': console.log('page item clicked'); return;
-      case 'detail': console.log('detail item clicked'); break;
-      case 'link': window.open(item.url); break;
-      default: console.log("no idea what was clicked: "); return;
-    }
-
+    this.itemService.handleClick(item);
   }
 
 }
