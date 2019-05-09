@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HistoryService } from "../../services/history.service";
+import {Item} from "../../types";
 
 @Component({
   selector: 'den-breadcrumb',
@@ -7,8 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DenBreadcrumbComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public historyService: HistoryService
+  ) { }
 
   ngOnInit() {}
-
 }

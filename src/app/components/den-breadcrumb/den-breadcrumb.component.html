@@ -1,3 +1,3 @@
 <div class="breadcrumb-trail">
-  This > Will > Show > Breadcrumb > Trail
+  <div class="breadcrumb-item" (click)="historyService.popUntil(page)" *ngFor="let page of historyService.pageHistory">{{ page.title }}</div>
 </div>

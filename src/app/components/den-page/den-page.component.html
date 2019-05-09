@@ -1,6 +1,7 @@
 <div class="page-container">
   <div *ngIf="page; else loading">
-    <div class="page-title">{{ page.title }}</div>
+    <den-breadcrumb></den-breadcrumb>
+    <!--<div class="page-title">{{ page.title }}</div>-->
   </div>
   <div *ngFor="let category of categories">
     <den-category [category]="category"></den-category>
