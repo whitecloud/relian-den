@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Search Modal</ion-title>
+    <ion-searchbar debounce="500" showCancelButton placeholder="Search names and descriptions" (ionChange)="setSearchViewItems($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <den-list-item [item]="item" *ngFor="let item  of searchViewItems"></den-list-item>
+  </ion-list>
 </ion-content>

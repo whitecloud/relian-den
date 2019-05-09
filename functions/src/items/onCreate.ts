@@ -42,7 +42,7 @@ function generateMatches(itemString: any) {
   if(!itemString) return matches;
   for (let i = 0; i < itemString.length - 1; i++) {
     for (let j = i + 1; j < itemString.length; j++) {
-      matches.push(itemString.slice(i, j));
+      matches.push(itemString.slice(i, j).toLowerCase());
     }
   }
   return matches;

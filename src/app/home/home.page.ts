@@ -4,7 +4,8 @@ import { ModalController, PopoverController } from '@ionic/angular';
 import { AddItemModalPage } from '../add-item-modal/add-item-modal.page';
 import { ProfilePopoverPage } from '../profile-popover/profile-popover.page';
 import { UserService } from '../services/user.service';
-import {HistoryService} from "../services/history.service";
+import { HistoryService } from "../services/history.service";
+import { SearchModalPage } from "../search-modal/search-modal.page";
 
 @Component({
   selector: 'app-home',
@@ -79,7 +80,13 @@ export class HomePage {
     tab.active = true;
   }
 
-  openSearchModal(){
-    console.log("search modal button clicked")
+  async openSearchModal(){
+    const modal = await this.modalController.create({
+      component: SearchModalPage,
+      componentProps: {
+        currentPage: this.historyService.currentPage
+      }
+    });
+    modal.present();
   }
 }

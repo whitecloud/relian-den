@@ -8,6 +8,7 @@ import { HomePage } from './home.page';
 import { ComponentsModule } from '../components/components.module';
 import { AddItemModalPage } from '../add-item-modal/add-item-modal.page';
 import { ProfilePopoverPage } from '../profile-popover/profile-popover.page';
+import {SearchModalPage} from "../search-modal/search-modal.page";
 
 @NgModule({
   imports: [
@@ -24,12 +25,14 @@ import { ProfilePopoverPage } from '../profile-popover/profile-popover.page';
   ],
   entryComponents: [
     AddItemModalPage,
-    ProfilePopoverPage
+    ProfilePopoverPage,
+    SearchModalPage
   ],
   declarations: [
     HomePage,
     AddItemModalPage,
-    ProfilePopoverPage
+    ProfilePopoverPage,
+    SearchModalPage
   ]
 })
 export class HomePageModule {}

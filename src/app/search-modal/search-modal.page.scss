@@ -1,0 +1,60 @@
+.modal-container {
+  padding: 10px;
+
+  .description-container {
+    color: #7f7f7f;
+    height: 40px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  label {
+    padding: 20px 0 5px;
+    text-transform: uppercase;
+  }
+
+  .size-container {
+    .sizes-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+
+      .large {
+        height: 100px;
+        width: 100px;
+      }
+
+      .small {
+        height: 50px;
+        width: 50px;
+      }
+
+      .large, .small {
+        border-radius: 10px;
+        border: 1px solid #7f7f7f;
+        cursor: pointer;
+
+        &.active {
+          border: 3px solid #387fff;
+          cursor: initial;
+        }
+      }
+    }
+  }
+
+  .category-container {
+    ion-select {
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+  }
+
+  input,
+  .size-container,
+  ion-select {
+    margin: 5px 0 10px;
+  }
+}

@@ -3,6 +3,8 @@ import { map } from "rxjs/operators";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { ItemsService } from "./items.service";
 import * as _ from 'lodash';
+import {Item} from "../types";
+import {Observable} from "rxjs";
 
 
 @Injectable({
@@ -14,7 +16,8 @@ export class SearchService {
               private itemsService: ItemsService) {
   }
 
-  findItems(searchString) {
+  findItems(searchString): Observable<Item[]> {
+    searchString = searchString.toLowerCase();
     return this.afs.collection('search', ref => {
       return ref.where('matches', 'array-contains', searchString);
     })
