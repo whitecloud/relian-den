@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import { CategoriesService } from '../services/categories.service';
 import { NavParams, ModalController } from '@ionic/angular';
 import { Page, Category } from '../types';
+import { PagesService } from '../services/pages.service';
 
 @Component({
   selector: 'app-add-item-modal',
@@ -39,7 +40,8 @@ export class AddItemModalPage implements OnInit {
     private itemsService: ItemsService,
     private categoriesService: CategoriesService,
     private navParams: NavParams,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private pagesService: PagesService
   ) {
     this.newItem = {
       categoryId: '',
@@ -70,20 +72,6 @@ export class AddItemModalPage implements OnInit {
     this.newItem.type = type;
   }
 
-  addItem() {
-    let item: any = _.pick(this.newItem, ['categoryId', 'title', 'type', 'size', 'iconUrl']);
-    item.type = item.type.title.toLowerCase();
-    item.favorites = [];
-
-    if (item.type === 'link') {
-      item.url = this.newItem.url;
-    }
-
-    this.itemsService.addItem(item);
-    this.$categories.unsubscribe();
-    this.closeModal();
-  }
-
   selectSize(size) {
     this.newItem.size = size;
   }
@@ -92,17 +80,31 @@ export class AddItemModalPage implements OnInit {
     this.newItem.categoryId = category.id;
   }
 
+  show(controlName) {
+    switch(this.newItem.type.title) {
+      case 'Link':
+        return ['link'].includes(controlName);
+      case 'Detail':
+        return ['description'].includes(controlName);
+      case 'Page':
+        return [].includes(controlName);
+      default:
+        return false;
+    }
+  }
+
   canSave() {
-    if (this.newItem.type.title === 'Link') {
-      return this.hasRequired() &&
-        this.newItem.url;
-    }
-    if (this.newItem.type.title === 'Detail') {
-      return this.hasRequired() &&
-        this.newItem.shortDescription;
-    }
-    if (this.newItem.type.title === 'Page') {
-      return false;
+    switch(this.newItem.type.title) {
+      case 'Link':
+        return this.hasRequired() &&
+          this.newItem.url;
+      case 'Detail':
+        return this.hasRequired() &&
+          this.newItem.description;
+      case 'Page':
+        return this.hasRequired();
+      default:
+        return false;
     }
   }
 
@@ -112,6 +114,31 @@ export class AddItemModalPage implements OnInit {
       this.newItem.type && 
       this.newItem.size && 
       this.newItem.iconUrl;
+  }
+
+  async addItem() {
+    let item: any = _.pick(this.newItem, ['categoryId', 'title', 'type', 'size', 'iconUrl']);
+    item.type = item.type.title.toLowerCase();
+    item.favorites = [];
+
+    let pageId = item.title.toLowerCase().replace(/[^a-z]+/g, '');
+    if (item.type === 'link') {
+      item.url = this.newItem.url;
+    }
+    else if (item.type === 'detail') {
+      item.description = this.newItem.description;
+    }
+    else if (item.type === 'page') {
+      this.pagesService.addPage({
+        id: pageId,
+        title: item.title
+      });
+      item.pageId = pageId;
+    }
+
+    this.itemsService.addItem(item);
+    this.$categories.unsubscribe();
+    this.closeModal();
   }
 
   closeModal() {

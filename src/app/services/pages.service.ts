@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Page } from '../types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,16 @@ import { Observable } from 'rxjs';
 export class PagesService {
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private userService: UserService
   ) { }
+
+  addPage(page) {
+    page.createdAt = Date.now();
+    page.createdBy = this.userService.user.id;
+
+    return this.afs.collection('pages').add(page);
+  }
 
   getPage(pageId: string): Observable<Page> {
     return this.afs.collection('pages').doc(pageId)
