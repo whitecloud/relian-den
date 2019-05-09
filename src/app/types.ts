@@ -62,10 +62,8 @@ export interface Item {
   pageId?: string //used for Pages
   detailId?: string //used for Detail items
   color?: string; // hex value
-  shortDescription?: string; // only makes sense for a medium or large item
+  description?: string; // only makes sense for a detail item
   allowComments?: boolean; // only makes sense for a detail view
-  longDescription?: string; // only makes sense for a detail view
-
 
   // client needs
   id?: string;
