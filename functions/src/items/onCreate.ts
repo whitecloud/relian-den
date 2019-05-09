@@ -25,7 +25,7 @@ export const itemsOnCreate = functions.firestore
         .catch(err => console.log(err));
 
       db.collection('search').add({
-        matches: [...generateMatches(item.categoryId), ...generateMatches(item.title), ...generateMatches(item.description)],
+        matches: [...generateMatches(item.title), ...generateMatches(item.description)],
         item: item,
 
         // auth metadata
