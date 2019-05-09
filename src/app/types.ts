@@ -56,6 +56,8 @@ export interface Item {
 
   // optional
   url?: string; // used for links
+  pageId?: string //used for Pages
+  detailId?: string //used for Detail items
   color?: string; // hex value
   shortDescription?: string; // only makes sense for a medium or large item
   allowComments?: boolean; // only makes sense for a detail view
