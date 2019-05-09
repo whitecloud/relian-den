@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Item} from "../../types";
+import { Component, Input, OnInit } from '@angular/core';
+import { Item } from '../../types';
 
 @Component({
   selector: 'den-favorite-item',
@@ -10,7 +10,7 @@ export class DenFavoriteItemComponent implements OnInit {
 
   @Input() item: Item;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {}
 }
