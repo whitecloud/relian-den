@@ -1,14 +1,12 @@
 ion-title {
   cursor: pointer;
+  padding: 0;
 
   img {
-    width: 26px;
-    height: 26px;
-    margin-right: 6px;
-  }
-  span {
-    bottom: 4px;
     position: relative;
+    top: 2px;
+    margin-left: 10px;
+    height: 35px;
   }
 }
 
@@ -66,5 +64,11 @@ ion-title {
 
   .home-container {
     margin-bottom: 50px;
+  }
+}
+
+@media(max-width: 450px) {
+  ion-title.title-ios img {
+    height: 24px;
   }
 }
