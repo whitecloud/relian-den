@@ -23,8 +23,7 @@
     <div class="ion-tabs">
       <ion-tab-bar slot="bottom">
         <ion-tab-button *ngFor="let tab of tabs" [ngClass]="{'active': tab.active}" (click)="selectTab(tab)">
-          <ion-label>{{ tab.title }}</ion-label>
-          <ion-icon [name]="tab.icon"></ion-icon>
+          <ion-icon [name]="tab.icon" [ngStyle]="{color: tab.active ? tab.activeColor : '#7f7f7f'}"></ion-icon>
         </ion-tab-button>
       </ion-tab-bar>
     </div>
@@ -32,7 +31,7 @@
 
   <!-- fab placed to the bottom end -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="openAddModal()">
+    <ion-fab-button color="success" (click)="openAddModal()">
       <ion-icon name="md-add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

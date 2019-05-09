@@ -4,7 +4,7 @@
     Favorites
   </div>
   <div class="empty-message" *ngIf="items && items.length === 0">
-    Add something to your favorites by clicking the heart
+    Add something to your favorites by clicking the heart next to any item
   </div>
   <ion-reorder-group (ionItemReorder)="reorderItem($event)" [disabled]="false">
     <div class="favorite-item-container" *ngFor="let item of items">

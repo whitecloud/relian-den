@@ -19,16 +19,19 @@ export class HomePage {
     {
       title: 'Favorites',
       icon: 'md-heart',
+      activeColor: '#ff4d4d',
       active: false
     },
     {
       title: 'Home',
       icon: 'md-home',
+      activeColor: '#f8b102',
       active: true
     },
     {
       title: 'Activity',
       icon: 'md-time',
+      activeColor: '#0098ff',
       active: false
     }
   ];

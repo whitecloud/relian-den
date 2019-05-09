@@ -43,16 +43,17 @@ ion-title {
     }
   }
 
-  ion-tab-button {
-    color: #7f7f7f;
+  .side-panel-title {
+    display: none !important;
+  }
 
+  ion-tab-button {
     ion-badge {
       color: #fff;
     }
 
     &.active {
       background: #eee;
-      color: #3880ff;
     }
   }
 
