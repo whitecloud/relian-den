@@ -9,7 +9,7 @@ export class HistoryService {
   constructor() { }
 
   public push(page: Page): void {
-    this.pageHistory.push(page)
+    this.pageHistory.push(page);
   }
 
   public pop(): Page {
