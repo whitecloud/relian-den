@@ -45,16 +45,16 @@
     }
   }
 
-  .category-container {
-    ion-select {
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-  }
-
   input,
   .size-container,
-  ion-select {
+  ion-select,
+  ion-textarea {
     margin: 5px 0 10px;
+  }
+
+  .category-container ion-select,
+  ion-textarea {
+    border-radius: 5px;
+    border: 1px solid #ccc;
   }
 }

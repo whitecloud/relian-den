@@ -22,9 +22,9 @@ ion-title {
   }
 }
 
-@media(min-width: 1200px) {
-  .ion-tabs {
-    display: none;
+@media(max-width: 450px) {
+  ion-title.title-ios img {
+    height: 24px;
   }
 }
 
@@ -72,8 +72,18 @@ ion-title {
   }
 }
 
-@media(max-width: 450px) {
-  ion-title.title-ios img {
-    height: 24px;
+@media(min-width: 1200px) {
+  .ion-tabs {
+    display: none;
+  }
+
+  den-page {
+    width: 800px;
+  }
+}
+
+@media(min-width: 1400px) {
+  den-page {
+    width: 1000px;
   }
 }

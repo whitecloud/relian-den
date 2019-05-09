@@ -60,8 +60,14 @@
       <input type="text" [(ngModel)]="newItem.title" placeholder="Cool Thing">
     </div>
 
+    <!-- description -->
+    <div class="modal-input" *ngIf="show('description')">
+      <label>Description</label>
+      <ion-textarea placeholder="Enter something for interested people to read." [(ngModel)]="newItem.description"></ion-textarea>
+    </div>
+
     <!-- link -->
-    <div class="modal-input">
+    <div class="modal-input" *ngIf="show('link')">
       <label>Link</label>
       <input type="text" [(ngModel)]="newItem.url" placeholder="https://link.to/cool/thing">
     </div>
