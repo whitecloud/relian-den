@@ -14,4 +14,10 @@ export class DenBreadcrumbComponent implements OnInit {
   ) { }
 
   ngOnInit() {}
+
+  itemClicked(item) {
+    if (this.historyService.currentPage.id !== item.pageId) {
+      this.historyService.popUntil(item);
+    }
+  }
 }
