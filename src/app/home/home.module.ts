@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { HomePage } from './home.page';
 import { ComponentsModule } from '../components/components.module';
 import { AddItemModalPage } from '../add-item-modal/add-item-modal.page';
+import { ProfilePopoverPage } from '../profile-popover/profile-popover.page';
 
 @NgModule({
   imports: [
@@ -22,11 +23,13 @@ import { AddItemModalPage } from '../add-item-modal/add-item-modal.page';
     ComponentsModule
   ],
   entryComponents: [
-    AddItemModalPage
+    AddItemModalPage,
+    ProfilePopoverPage
   ],
   declarations: [
     HomePage,
-    AddItemModalPage
+    AddItemModalPage,
+    ProfilePopoverPage
   ]
 })
 export class HomePageModule {}

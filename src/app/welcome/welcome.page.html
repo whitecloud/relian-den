@@ -1,9 +1,12 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Welcome</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="login-container">
+    
+    <div class="login-box">
+      <div class="title">Relian Den</div>
+      <label>Name</label>
+      <input [(ngModel)]="name">
+      <button [disabled]="name.length < 3" (click)="login()">Log In</button>
+    </div>
 
+  </div>
 </ion-content>

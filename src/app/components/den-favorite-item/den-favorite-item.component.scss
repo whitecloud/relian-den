@@ -1,0 +1,23 @@
+img {
+  cursor: pointer;
+}
+
+.item-container {
+  text-align: center;
+  max-width: 90px;
+  img {
+    width: 70%;
+  }
+}
+
+.item-icon {
+  display: inline-block;
+  background: white;
+}
+
+.link {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  color: #3880ff;
+}

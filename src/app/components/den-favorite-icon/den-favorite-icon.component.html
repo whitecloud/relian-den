@@ -1,2 +1,4 @@
-<ion-icon *ngIf="isFavorite" name="heart"></ion-icon>
-<ion-icon *ngIf="!isFavorite" name="heart-empty"></ion-icon>
+<div (click)="toggleFavorite()">
+    <ion-icon *ngIf="isFavorite" name="heart"></ion-icon>
+    <ion-icon *ngIf="!isFavorite" name="heart-empty"></ion-icon>
+</div>
