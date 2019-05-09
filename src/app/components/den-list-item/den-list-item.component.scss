@@ -6,20 +6,19 @@ ion-card {
   height: 38px;
   cursor: pointer;
 
-  div {
-    //float: left;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  ion-icon {
-    margin: 5px;
-  }
-
   img {
     width: 30px;
     height: 30px;
     margin: 5px;
+  }
+
+  .title-and-icon {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+
+    ion-icon {
+      margin: 5px;
+    }
   }
 }

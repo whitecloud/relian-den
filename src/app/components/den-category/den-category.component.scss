@@ -1,5 +1,5 @@
 .category-container {
-  margin-top: 15px;
+  margin: 20px 0 5px 0;
 
   .category-title{
     font-size: 24px;
@@ -8,5 +8,6 @@
   
   .item-container {
     display: flex;
+    overflow: scroll;
   }
 }

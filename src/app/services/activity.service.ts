@@ -10,13 +10,17 @@ import * as _ from "lodash";
 })
 export class ActivityService {
 
+  activityLimit = 20;
+  
   constructor(
     private afs: AngularFirestore
   ) { }
 
   public getActivities(): Observable<ActivityItem[]> {
     return this.afs.collection<ActivityItem>('activities', ref => {
-      return ref.orderBy('createdAt', 'desc')
+      return ref
+        .orderBy('createdAt', 'desc')
+        .limit(this.activityLimit);
     })
       .snapshotChanges()
       .pipe (
