@@ -1,7 +1,12 @@
-.category-title{
-  font-size: x-large;
-}
+.category-container {
+  margin-top: 15px;
 
-.item-container {
-  display: flex;
+  .category-title{
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .item-container {
+    display: flex;
+  }
 }
