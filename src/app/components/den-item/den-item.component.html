@@ -2,7 +2,7 @@
   {{item.title}}
   <ion-card class="item-icon">
     <ion-icon class="link" *ngIf="item.type === 'link'" name="md-share-alt"></ion-icon>
-    <img (click)="itemClicked(item)" [src]="item.iconUrl"/>
-    <den-favorite-icon [item]="item"></den-favorite-icon>
+    <img (click)="itemClicked(item)" [src]="item.iconUrl">
+    <den-favorite-icon [item]="item" *ngIf="item && item.favorites"></den-favorite-icon>
   </ion-card>
 </div>

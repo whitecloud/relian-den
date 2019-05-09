@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 import { UserService } from './user.service';
 import { PagesService } from "./pages.service";
 import { HistoryService } from "./history.service";
+import {NavController} from "@ionic/angular";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,8 @@ export class ItemsService {
     private afs: AngularFirestore,
     private userService: UserService,
     private pageService: PagesService,
-    private historyService: HistoryService
+    private historyService: HistoryService,
+    private router: Router
   ) { 
   }
 
@@ -88,7 +91,11 @@ export class ItemsService {
         console.log('page item clicked');
 
         break;
-      case 'detail': console.log('detail item clicked'); break;
+      case 'detail':
+        console.log('detail item clicked');
+        this.router.navigate(['/detail', item.id]);
+
+        break;
       case 'link': window.open(item.url); break;
       default: console.log("no idea what was clicked: "); return;
     }
