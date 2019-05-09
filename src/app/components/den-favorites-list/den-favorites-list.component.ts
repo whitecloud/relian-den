@@ -14,12 +14,11 @@ export class DenFavoritesListComponent implements OnInit {
   $items: any;
 
   constructor(
-      private itemsService: ItemsService,
-      private userService: UserService
+    private itemsService: ItemsService,
+    private userService: UserService
   ) {
-
     //sub to favorites
-    if( this.userService.user){
+    if ( this.userService.user) {
       const userId = this.userService.user.id;
       this.$items = this.itemsService.getFavoriteItems(userId).subscribe(favoriteItems => {
         this.items = favoriteItems;
@@ -27,15 +26,22 @@ export class DenFavoritesListComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
-  ngOnChanges(changes: any){
-    if( this.userService.user){
+  ngOnChanges(changes: any) {
+    if ( this.userService.user) {
       const userId = this.userService.user.id;
       if(this.$items) this.$items.unsubscribe();
       this.$items = this.itemsService.getFavoriteItems(userId).subscribe(favoriteItems => {
         this.items = favoriteItems;
       });
     }
+  }
+
+  reorderItem(event) {
+    const itemToMove = this.items.splice(event.detail.from, 1)[0];
+    this.items.splice(event.detail.to, 0, itemToMove);
+    event.detail.complete();
   }
 }

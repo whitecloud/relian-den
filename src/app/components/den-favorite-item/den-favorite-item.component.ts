@@ -8,19 +8,9 @@ import {Item} from "../../types";
 })
 export class DenFavoriteItemComponent implements OnInit {
 
-  //TODO this class is a dupe of den-item
   @Input() item: Item;
 
   constructor() { }
 
   ngOnInit() {}
-
-  itemClicked(item: Item) {
-    switch (item.type) {
-      case 'page': console.log('page item clicked'); return;
-      case 'detail': console.log('detail item clicked'); break;
-      case 'link': window.open(item.url); break;
-      default: console.log("no idea what was clicked: "); return;
-    }
-  }
 }
