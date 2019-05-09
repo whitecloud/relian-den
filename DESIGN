@@ -64,8 +64,6 @@
 /////////// SERVICES //////////////
 ///////////////////////////////////
 
-auth.service.ts
-
 pages.service.ts
 
 categories.service.ts

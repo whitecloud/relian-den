@@ -15,7 +15,6 @@ export class DenItemComponent implements OnInit {
   ngOnInit() {}
 
   itemClicked(item: Item) {
-    console.log(item);
     switch (item.type) {
       case 'page': console.log('page item clicked'); return;
       case 'detail': console.log('detail item clicked'); break;

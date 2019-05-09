@@ -15,7 +15,7 @@ export interface Page {
   
   // auth metadata
   createdAt: number; // unix timestamp
-  createdBy: string; // userId
+  createdBy: User; // userId
 
   // client needs
   id?: string;
@@ -32,7 +32,7 @@ export interface Category {
 
   // auth metadata
   createdAt: number; // unix timestamp
-  createdBy: string; // userId
+  createdBy: User; // userId
 
   // client needs
   id?: string;
@@ -63,7 +63,7 @@ export interface Item {
 
   // auth metadata
   createdAt: number; // unix timestamp
-  createdBy: string; // userId
+  createdBy: User; // userId
 
   // client needs
   id?: string;
@@ -82,7 +82,7 @@ export interface ActivityItem {
 
   // auth metadata
   createdAt: number; // unix timestamp
-  createdBy: string; // userId
+  createdBy: User; // userId
 
   // client needs
   id?: string;
@@ -98,7 +98,7 @@ export interface Message {
 
   // auth metadata
   createdAt: number; // unix timestamp
-  createdBy: string; // userId
+  createdBy: User; // userId
 
   // client needs
   id?: string;

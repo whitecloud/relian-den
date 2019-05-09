@@ -11,11 +11,10 @@ export const itemsOnCreate = functions.firestore
 
     const item : Item = doc.data() as Item;
 
-
     console.log('Setting up item: ' + item.title);
 
     return db.collection('activities').add({
-      actionText: 'Justin created an item:',
+      actionText: item.createdBy.name + ' created an item:',
       item: item,
 
       // auth metadata

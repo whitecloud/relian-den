@@ -11,7 +11,6 @@ export const usersOnCreate = functions.firestore
 
     const user : User = doc.data() as User;
 
-
     console.log('Setting up User: ' + user.name);
 
     return db.collection('activities').add({

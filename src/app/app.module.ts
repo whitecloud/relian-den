@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
 
 const firebase = {
   apiKey: "AIzaSyD5LG7VvBg9FegezOLOKrBmSeCVB7230Js",
@@ -30,8 +29,7 @@ const firebase = {
     IonicModule.forRoot(), 
     AppRoutingModule,
     AngularFireModule.initializeApp(firebase),
-    AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFirestoreModule
   ],
   providers: [
     StatusBar,

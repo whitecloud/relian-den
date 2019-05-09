@@ -30,7 +30,6 @@ export class DenFavoritesListComponent implements OnInit {
   ngOnInit() {}
 
   ngOnChanges(changes: any){
-    console.log(changes);
     if( this.userService.user){
       const userId = this.userService.user.id;
       if(this.$items) this.$items.unsubscribe();

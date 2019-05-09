@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Item } from '../types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,14 @@ import { Observable } from 'rxjs';
 export class ItemsService {
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private userService: UserService
   ) { 
   }
 
   addItem(item: any) {
     item.createdAt = Date.now();
-    item.createdBy = 'anonId';
+    item.createdBy = this.userService.user;
 
     return this.afs.collection('items').add(item);
   }

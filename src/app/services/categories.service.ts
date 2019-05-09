@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Category } from '../types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { Observable } from 'rxjs';
 export class CategoriesService {
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private userService: UserService
   ) { }
 
   getCategory(categoryId: string): Observable<Category> {
@@ -36,7 +38,8 @@ export class CategoriesService {
 
   addCategory(category){
     category.createdAt = Date.now();
-    category.createdBy = 'MATTHEW THOMAS TAYLOR TROLL';
+    category.createdBy = this.userService.user;
+
     return this.afs.collection('categories').add(category);
   }
 

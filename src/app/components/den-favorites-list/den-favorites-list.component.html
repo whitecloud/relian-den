@@ -2,7 +2,7 @@
   <div class="favorites-title">
     <ion-icon class="heart" name="heart"></ion-icon>
     Favorites</div>
-  <div class="empty-message">
+  <div class="empty-message" *ngIf="items && items.length === 0">
     Add something to your favorites by clicking the heart
   </div>
   <div *ngFor="let item of items">
