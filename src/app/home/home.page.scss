@@ -1,3 +1,15 @@
+ion-title {
+  img {
+    width: 26px;
+    height: 26px;
+    margin-right: 6px;
+  }
+  span {
+    bottom: 4px;
+    position: relative;
+  }
+}
+
 .home-container {
   position: relative;
   display: flex;
