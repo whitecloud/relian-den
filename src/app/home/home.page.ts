@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { PagesService } from '../services/pages.service';
-import { Page } from '../types';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { AddItemModalPage } from '../add-item-modal/add-item-modal.page';
 import { ProfilePopoverPage } from '../profile-popover/profile-popover.page';
 import { UserService } from '../services/user.service';
+import {HistoryService} from "../services/history.service";
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,6 @@ import { UserService } from '../services/user.service';
 export class HomePage {
 
   $pages: any;
-  currentPage: Page;
 
   tabs = [
     {
@@ -32,18 +31,15 @@ export class HomePage {
       icon: 'md-time',
       active: false
     }
-  ]
+  ];
 
   constructor(
+    public  historyService: HistoryService,
     private pagesService: PagesService,
     private modalController: ModalController,
     private popoverController: PopoverController,
     private userService: UserService
   ) {
-    // set the current page to the home page when we start
-    this.$pages = this.pagesService.getPage('home').subscribe(homePage => {
-      this.currentPage = homePage;
-    });
   }
 
   /**
@@ -54,7 +50,7 @@ export class HomePage {
     const modal = await this.modalController.create({
       component: AddItemModalPage,
       componentProps: {
-        currentPage: this.currentPage
+        currentPage: this.historyService.currentPage
       }
     });
     modal.present();

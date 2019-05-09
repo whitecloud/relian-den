@@ -22,12 +22,12 @@ export class DenPageComponent implements OnInit {
   ngOnInit() {}
   
   ngOnChanges(changes: any) {
+    console.log(changes, this.page);
     if(this.page && this.page.id) {
       if(this.$categories) this.$categories.unsubscribe();
       this.$categories = this.categoryService.getCategories(this.page.id).subscribe(pageCategories => {
         this.categories = pageCategories;
       });
-      this.historyService.push(this.page)
     }
   }
 }

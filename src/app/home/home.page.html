@@ -17,7 +17,7 @@
     <den-favorites-list [ngClass]="{'active': tabs[0].active}"></den-favorites-list>
     <den-page
       [ngClass]="{'active': tabs[1].active}"
-      [page]="currentPage">
+      [page]="historyService.currentPage">
     </den-page>
     <den-activity-list [ngClass]="{'active': tabs[2].active}"></den-activity-list>
 

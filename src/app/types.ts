@@ -50,6 +50,9 @@ export interface Item {
   type: string; // page, detail, link
   size: string; // large, medium, small
   iconUrl: string;
+  // auth metadata
+  createdAt: number; // unix timestamp
+  createdBy: User; // userId
 
   // user stuff
   favorites: string[]; // userIds that added this to their favs
@@ -63,9 +66,6 @@ export interface Item {
   allowComments?: boolean; // only makes sense for a detail view
   longDescription?: string; // only makes sense for a detail view
 
-  // auth metadata
-  createdAt: number; // unix timestamp
-  createdBy: User; // userId
 
   // client needs
   id?: string;

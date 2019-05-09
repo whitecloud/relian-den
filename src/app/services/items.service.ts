@@ -5,8 +5,8 @@ import { Item } from '../types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
-import {PagesService} from "./pages.service";
-import {HistoryService} from "./history.service";
+import { PagesService } from "./pages.service";
+import { HistoryService } from "./history.service";
 
 @Injectable({
   providedIn: 'root'
@@ -84,9 +84,7 @@ export class ItemsService {
   handleClick(item: Item) {
     switch (item.type) {
       case 'page':
-        this.pageService.getPage(item.pageId).toPromise().then( page => {
-          this.historyService.push(this.pageService.mapPages(page));
-        });
+        this.historyService.push({title: item.title, pageId: item.pageId});
         console.log('page item clicked');
 
         break;
@@ -94,5 +92,6 @@ export class ItemsService {
       case 'link': window.open(item.url); break;
       default: console.log("no idea what was clicked: "); return;
     }
+
   }
 }
