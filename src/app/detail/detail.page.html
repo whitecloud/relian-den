@@ -15,11 +15,14 @@
       <div *ngIf="item.description">{{item.description}}</div>
       <div *ngIf="!item.description">No description provided</div>
       <div class="chat">
-        <div class="message" *ngFor="let message of item.messages">
+        <div class="message" *ngFor="let message of messages">
           <den-message [message]="message"></den-message>
         </div>
       </div>
-      <ion-input type="text" placeholder="add your message here"></ion-input>
+      <input [(ngModel)]="newMessage" type="text" placeholder="Add your message here">
+      <ion-button color="primary" (click)="addMessage()" [disabled]="!canAddMessage()">
+        Submit
+      </ion-button>
     </div>
 
   </ion-content>
