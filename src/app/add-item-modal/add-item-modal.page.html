@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>New...</ion-title>
+    <ion-title>New {{newItem.type.title}}</ion-title>
     <ion-buttons slot="primary">
       <ion-button color="primary" (click)="addItem()" [disabled]="!canSave()">
         Save
@@ -70,6 +70,12 @@
     <div class="modal-input">
       <label>Icon Url</label>
       <input type="text" [(ngModel)]="newItem.iconUrl" placeholder="https://imgur.com/cool-icon-128">
+    </div>
+
+    <!-- preview -->
+    <div class="preview-container">
+      <label>Preview</label>
+      <den-item [item]="newItem"></den-item>
     </div>
 
   </div>
