@@ -78,4 +78,8 @@ export class HomePage {
     }
     tab.active = true;
   }
+
+  openSearchModal(){
+    console.log("search modal button clicked")
+  }
 }

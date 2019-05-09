@@ -47,7 +47,6 @@ export class AddItemModalPage implements OnInit {
       type: this.itemTypes[0], // default to link
       size: 'small',
       iconUrl: '',
-      favorites: [],
 
       // optional
       url: '',
@@ -72,8 +71,9 @@ export class AddItemModalPage implements OnInit {
   }
 
   addItem() {
-    let item: any = _.pick(this.newItem, ['categoryId', 'title', 'type', 'size', 'iconUrl', 'favorites']);
+    let item: any = _.pick(this.newItem, ['categoryId', 'title', 'type', 'size', 'iconUrl']);
     item.type = item.type.title.toLowerCase();
+    item.favorites = [];
 
     if (item.type === 'link') {
       item.url = this.newItem.url;
@@ -81,6 +81,7 @@ export class AddItemModalPage implements OnInit {
 
     this.itemsService.addItem(item);
     this.$categories.unsubscribe();
+    this.closeModal();
   }
 
   selectSize(size) {
@@ -110,8 +111,7 @@ export class AddItemModalPage implements OnInit {
       this.newItem.title && 
       this.newItem.type && 
       this.newItem.size && 
-      this.newItem.iconUrl && 
-      this.newItem.favorites;
+      this.newItem.iconUrl;
   }
 
   closeModal() {
