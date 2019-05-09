@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Item} from "../types";
 import {ActivatedRoute} from "@angular/router";
 import {ItemsService} from "../services/items.service";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-detail',
@@ -16,7 +17,8 @@ export class DetailPage implements OnInit {
 
   constructor(
       private route: ActivatedRoute,
-      private itemsService: ItemsService
+      private itemsService: ItemsService,
+      private userService: UserService
   ) {
     const sub = this.route.params.subscribe(params => {
       this.id = params['id'];

@@ -64,6 +64,7 @@ export interface Item {
   color?: string; // hex value
   description?: string; // only makes sense for a detail item
   allowComments?: boolean; // only makes sense for a detail view
+  messages?: Message[];
 
   // client needs
   id?: string;

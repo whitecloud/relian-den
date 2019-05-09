@@ -14,7 +14,14 @@
       </div>
       <div *ngIf="item.description">{{item.description}}</div>
       <div *ngIf="!item.description">No description provided</div>
+      <div class="chat">
+        <div class="message" *ngFor="let message of item.messages">
+          <den-message [message]="message"></den-message>
+        </div>
+      </div>
+      <ion-input type="text" placeholder="add your message here"></ion-input>
     </div>
+
   </ion-content>
 
 

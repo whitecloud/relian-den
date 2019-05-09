@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Message} from "../../types";
 
 @Component({
   selector: 'den-message',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DenMessageComponent implements OnInit {
 
+  @Input() message: Message;
+
   constructor() { }
 
   ngOnInit() {}
-
 }
