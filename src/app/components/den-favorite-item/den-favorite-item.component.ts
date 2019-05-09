@@ -23,7 +23,5 @@ export class DenFavoriteItemComponent implements OnInit {
       case 'link': window.open(item.url); break;
       default: console.log("no idea what was clicked: "); return;
     }
-
-
   }
 }
