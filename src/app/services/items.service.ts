@@ -88,13 +88,9 @@ export class ItemsService {
     switch (item.type) {
       case 'page':
         this.historyService.push({title: item.title, pageId: item.pageId});
-        console.log('page item clicked');
-
         break;
       case 'detail':
-        console.log('detail item clicked');
         this.router.navigate(['/detail', item.id]);
-
         break;
       case 'link': window.open(item.url); break;
       default: console.log("no idea what was clicked: "); return;

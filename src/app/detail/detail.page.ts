@@ -22,14 +22,13 @@ export class DetailPage implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private itemsService: ItemsService,
-      private userService: UserService,
       private messagesService: MessagesService
   ) {
     const sub = this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.getItem();
       sub.unsubscribe();
     });
-    this.getItem();
     this.newMessage = '';
   }
 
@@ -38,16 +37,26 @@ export class DetailPage implements OnInit {
   }
 
   clearMessage(){
-      this.newMessage = '';
-
+    this.newMessage = '';
   }
+
   getItem(){
-  console.log(this.id);
-    if(this.id){
-      if(this.$item) this.$item.unsubscribe();
-      this.$item = this.itemsService.getItem(this.id).subscribe( itm => {
-        this.item = itm;
-      })
+    if (this.id) {
+      // subscribe to the item
+      if (this.$item) {
+        this.$item.unsubscribe();
+      }
+      this.$item = this.itemsService.getItem(this.id).subscribe(item => {
+        this.item = item;
+      });
+
+      // subscribe to its messages
+      if (this.$messages) {
+        this.$messages.unsubscribe();
+      }
+      this.$messages = this.messagesService.getMessages(this.id).subscribe(messages => {
+        this.messages = messages;
+      });
     }
   }
 
@@ -59,18 +68,6 @@ export class DetailPage implements OnInit {
 
   canAddMessage(){
      return this.newMessage.length > 1;
-  }
-
-  //Get a live update of change to item ( not that that can happen right now...) and messages
-  ngOnChanges(){
-      console.log(this.id);
-    this.getItem();
-    if(this.id){
-        if(this.$messages) this.$messages.unsubscribe();
-        this.$messages = this.messagesService.getMessages(this.item.id).subscribe( msgs => {
-            this.messages = msgs;
-        })
-    }
   }
 
 }
