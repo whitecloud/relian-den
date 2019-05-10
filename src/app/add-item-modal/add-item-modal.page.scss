@@ -56,7 +56,11 @@
     margin-top: 0;
   }
 
-  .category-container ion-select,
+  .category-container ion-select {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
   ion-textarea {
     border-radius: 5px;
     border: 1px solid #ccc;
