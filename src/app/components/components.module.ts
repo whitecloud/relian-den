@@ -13,6 +13,8 @@ import { DenMessageComponent } from './den-message/den-message.component';
 import { DenPageComponent } from './den-page/den-page.component';
 import { DenListItemComponent } from './den-list-item/den-list-item.component';
 
+import { TimeagoModule } from 'ngx-timeago';
+
 @NgModule({
   declarations: [
     DenActivityItemComponent,
@@ -29,7 +31,8 @@ import { DenListItemComponent } from './den-list-item/den-list-item.component';
   ],
   imports: [
     IonicModule,
-    CommonModule
+    CommonModule,
+    TimeagoModule.forRoot()
   ],
   exports: [
     DenActivityItemComponent,

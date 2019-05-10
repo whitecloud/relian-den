@@ -5,10 +5,8 @@ import { Item } from '../types';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
-import { PagesService } from "./pages.service";
 import { HistoryService } from "./history.service";
-import {NavController} from "@ionic/angular";
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +16,6 @@ export class ItemsService {
   constructor(
     private afs: AngularFirestore,
     private userService: UserService,
-    private pageService: PagesService,
     private historyService: HistoryService,
     private router: Router
   ) { 

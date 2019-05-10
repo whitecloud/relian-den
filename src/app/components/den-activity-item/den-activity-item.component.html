@@ -1,4 +1,7 @@
 <p>
-  {{ activityItem.actionText }} {{activityItem.createdAt}}
+  <span class="action-text">
+    {{ activityItem.actionText }} 
+    <span class="time-ago">{{activityItem.createdAt  | timeago:live}}</span>
+  </span>
   <den-list-item *ngIf="activityItem.item" [item]="activityItem.item"></den-list-item>
 </p>
