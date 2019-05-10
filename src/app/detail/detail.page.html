@@ -8,11 +8,11 @@
   </ion-header>
 
   <ion-content>
-    <div *ngIf="item">
-      <div>
+    <div class="detai-page-container" *ngIf="item">
+      <div class="image-container">
         <img src="{{item.iconUrl}}"/>
       </div>
-      <div *ngIf="item.description">{{item.description}}</div>
+      <div class="description" *ngIf="item.description">{{item.description}}</div>
       <div *ngIf="!item.description">No description provided</div>
       <div class="chat">
         <div class="message" *ngFor="let message of messages">

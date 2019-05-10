@@ -19,7 +19,7 @@ export class MessagesService {
   addMessage(messageText: string, itemId){
     const message: any = {
       createdAt: Date.now(),
-      createBy: this.userService.user,
+      createdBy: this.userService.user,
       userName: this.userService.getUser().name,
       text: messageText
     }
@@ -30,7 +30,9 @@ export class MessagesService {
 
   getMessages(id: string): Observable<Message[]>{
     return this.afs.collection('items').doc(id)
-      .collection('messages')
+      .collection('messages', ref => {
+        return ref.orderBy('createdAt');
+      })
       .snapshotChanges()
       .pipe(
           map( actions => {

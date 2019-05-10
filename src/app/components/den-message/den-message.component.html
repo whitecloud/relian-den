@@ -1,3 +1,4 @@
-<div>
-  {{message.text}} - {{message.userName}}
+<div class="den-message">
+  <div>{{message.text}} - {{message.userName}}</div>
+  <div class="time-ago">{{message.createdAt | timeago:live}}</div>
 </div>
