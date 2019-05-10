@@ -14,6 +14,8 @@ export class DenCategoryComponent implements OnInit {
   items: Item[];
   $items: any;
 
+  lastList: string;
+
   constructor(
       private itemsService: ItemsService
   ) { }
@@ -24,13 +26,21 @@ export class DenCategoryComponent implements OnInit {
     if (this.category && this.category.id) {
       if (this.$items) this.$items.unsubscribe();
       this.$items = this.itemsService.getItems(this.category.id).subscribe(categoryItems => {
-        this.items = this.sortItems(categoryItems);
+        const newList = _(categoryItems).map('id').sort().value().join(',');
+        if (newList !== this.lastList) {
+          this.items = this.sortItems(categoryItems);
+          this.lastList = newList;
+        }
+        else {
+          for (const item of this.items) {
+            item.favorites = _.find(categoryItems, cItem => cItem.id === item.id).favorites;
+          }
+        }
       });
     }
   }
 
   sortItems(items) {
-    const list = [];
     const large = [];
     const small = [];
 
