@@ -1,5 +1,4 @@
 <div class="item-container {{item.size}}">
-  {{item.title}}
   <ion-card class="item-icon">
     <ion-icon class="link" *ngIf="item.type === 'link'" name="md-share-alt"></ion-icon>
     <div class="icon-container">
@@ -7,4 +6,5 @@
     </div>
     <den-favorite-icon [item]="item" *ngIf="item && item.favorites"></den-favorite-icon>
   </ion-card>
+  {{item.title}}
 </div>
