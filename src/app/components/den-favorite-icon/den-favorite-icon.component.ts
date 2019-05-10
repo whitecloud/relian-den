@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Item} from "../../types";
+import {Item, User} from "../../types";
 import {ItemsService} from "../../services/items.service";
 import {UserService} from "../../services/user.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'den-favorite-icon',
@@ -11,7 +12,6 @@ import {UserService} from "../../services/user.service";
 export class DenFavoriteIconComponent implements OnInit {
 
   @Input() item: Item;
-  isFavorite: boolean;
 
   constructor(
       private itemsService: ItemsService,
@@ -24,7 +24,7 @@ export class DenFavoriteIconComponent implements OnInit {
     if (this.userService.user) {
       const userId = this.userService.user.id;
 
-      if (this.isFavorite) {
+      if (this.isFavorite()) {
         this.item.favorites.splice(this.item.favorites.indexOf(userId), 1);
       } else {
         this.item.favorites.push(userId);
@@ -33,15 +33,7 @@ export class DenFavoriteIconComponent implements OnInit {
     }
   }
 
-  ngOnChanges(changes: any){
-    if (this.item && this.userService.user) {
-      const userId = this.userService.user.id;
-
-      if(this.item.favorites.includes(userId)) {
-        this.isFavorite = true;
-      } else {
-        this.isFavorite = false;
-      }
-    }
+  isFavorite(): boolean {
+    return this.item && this.userService.user && this.item.favorites.includes(this.userService.user.id);
   }
 }
