@@ -53,15 +53,24 @@ export class AddItemModalPage implements OnInit {
       // optional
       url: '',
       description: '',
-      allowComments: true
-    }
+      allowComments: true,
+      newCategoryName: ''
+    };
 
     this.currentPage = this.navParams.get('currentPage');
     this.$categories = this.categoriesService.getCategories(this.currentPage.id).subscribe(categories => {
-      if (!this.newItem.categoryId && categories.length) {
-        this.newItem.categoryId = categories[0].id;
-      }
       this.categories = categories;
+      this.categories.push({
+        title: 'New Category',
+        id: 'new',
+        pageId: this.currentPage.id,
+        createdAt: Date.now(),
+        createdBy: null
+      });
+
+      if (!this.newItem.categoryId && this.categories.length) {
+        this.newItem.categoryId = this.categories[0].id;
+      }
     });
   }
 
@@ -76,8 +85,8 @@ export class AddItemModalPage implements OnInit {
     this.newItem.size = size;
   }
 
-  selectCategory(category) {
-    this.newItem.categoryId = category.id;
+  selectCategory($event) {
+    this.newItem.categoryId = $event.detail.value;
   }
 
   show(controlName) {
@@ -113,13 +122,23 @@ export class AddItemModalPage implements OnInit {
       this.newItem.title && 
       this.newItem.type && 
       this.newItem.size && 
-      this.newItem.iconUrl;
+      this.newItem.iconUrl &&
+
+      // if we are creating a new category, expect a catefory name to be set
+      (this.newItem.categoryId !== 'new' || this.newItem.newCategoryName);
   }
 
   async addItem() {
     let item: any = _.pick(this.newItem, ['categoryId', 'title', 'type', 'size', 'iconUrl']);
     item.type = item.type.title.toLowerCase();
     item.favorites = [];
+
+    if (item.categoryId === 'new') {
+      item.categoryId = (await this.categoriesService.addCategory({
+        title: this.newItem.newCategoryName,
+        pageId: this.currentPage.id
+      })).id;
+    }
 
     let pageId = item.title.toLowerCase().replace(/[^a-z]+/g, '');
     if (item.type === 'link') {

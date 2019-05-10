@@ -29,16 +29,17 @@
       {{ newItem.type.description }}
     </p>
 
-    <!-- choose the type -->
+    <!-- choose the category -->
     <div class="category-container">
       <label>Category</label>
-      <ion-select [value]="newItem.categoryId">
+      <ion-select [value]="newItem.categoryId" (ionChange)="selectCategory($event)">
         <ion-select-option 
           *ngFor="let category of categories"
           [value]="category.id">
           {{ category.title }}
         </ion-select-option>
       </ion-select>
+      <input type="text" [(ngModel)]="newItem.newCategoryName" *ngIf="newItem.categoryId === 'new'" placeholder="New Category">
     </div>
 
     <!-- choose the size -->

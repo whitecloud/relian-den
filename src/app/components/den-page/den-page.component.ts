@@ -21,7 +21,10 @@ export class DenPageComponent implements OnInit {
   
   ngOnChanges() {
     if(this.page && this.page.id) {
-      if(this.$categories) this.$categories.unsubscribe();
+      if(this.$categories) {
+        this.$categories.unsubscribe();
+        delete this.categories;
+      }
       this.$categories = this.categoryService.getCategories(this.page.id).subscribe(pageCategories => {
         this.categories = pageCategories;
       });

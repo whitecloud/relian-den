@@ -1,9 +1,9 @@
 <div class="page-container">
-  <div *ngIf="page; else loading">
-    <den-breadcrumb></den-breadcrumb>
-  </div>
-  <div *ngFor="let category of categories">
-    <den-category [category]="category"></den-category>
+  <den-breadcrumb></den-breadcrumb>
+  <div *ngIf="page && categories; else loading">
+    <div *ngFor="let category of categories">
+      <den-category [category]="category"></den-category>
+    </div>
   </div>
   <ng-template #loading>
     <ion-spinner></ion-spinner>
