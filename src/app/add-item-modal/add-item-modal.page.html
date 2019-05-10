@@ -61,6 +61,12 @@
       <input type="text" [(ngModel)]="newItem.title" placeholder="Cool Thing">
     </div>
 
+    <!-- icon url -->
+    <div class="modal-input">
+      <label>Icon Url</label>
+      <input type="text" [(ngModel)]="newItem.iconUrl" placeholder="https://imgur.com/cool-icon-128">
+    </div>
+
     <!-- description -->
     <div class="modal-input" *ngIf="show('description')">
       <label>Description</label>
@@ -71,12 +77,6 @@
     <div class="modal-input" *ngIf="show('link')">
       <label>Link</label>
       <input type="text" [(ngModel)]="newItem.url" placeholder="https://link.to/cool/thing">
-    </div>
-
-    <!-- icon url -->
-    <div class="modal-input">
-      <label>Icon Url</label>
-      <input type="text" [(ngModel)]="newItem.iconUrl" placeholder="https://imgur.com/cool-icon-128">
     </div>
 
     <!-- preview -->

@@ -11,3 +11,12 @@
     overflow: scroll;
   }
 }
+
+@media(max-width: 1199px) {
+  .item-container {
+    width: 100vw;
+    position: relative;
+    left: -30px;
+    padding: 0 20px;
+  }
+}

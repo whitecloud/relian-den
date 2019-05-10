@@ -3,3 +3,9 @@
   min-height: 200px;
   padding: 10px 30px;
 }
+
+@media(min-width: 1200px) {
+  .empty-message {
+    margin-top: 25px;
+  }
+}

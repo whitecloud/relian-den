@@ -17,6 +17,18 @@ ion-fab-button .button-inner {
   background: #73b85e !important;
 }
 
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-message {
+  text-align: center;
+  color: #7f7f7f;
+  padding: 10px;
+}
+
 .side-panel-title {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -57,3 +69,8 @@ input {
 ion-card.ios {
   margin: 10px;
 }
+
+// no scrollbars!
+.element::-webkit-scrollbar { width: 0 !important }
+.element { overflow: -moz-scrollbars-none; }
+.element { -ms-overflow-style: none; }

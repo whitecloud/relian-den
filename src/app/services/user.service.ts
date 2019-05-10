@@ -22,6 +22,9 @@ export class UserService {
     if (this.user == null) {
       this.logout();
     }
+    else if (location.href.includes('welcome')) {
+      this.navCtrl.navigateRoot('/home');
+    }
   }
 
   /**

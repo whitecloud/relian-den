@@ -4,8 +4,13 @@
     <div *ngFor="let category of categories">
       <den-category [category]="category"></den-category>
     </div>
+    <div class="empty-message" *ngIf="categories.length === 0">
+      Add something to this page by clicking the add button in the bottom right.
+    </div>
   </div>
   <ng-template #loading>
-    <ion-spinner></ion-spinner>
+    <div class="spinner-container">
+      <ion-spinner></ion-spinner>
+    </div>
   </ng-template>
 </div>

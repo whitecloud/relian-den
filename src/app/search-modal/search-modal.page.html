@@ -1,7 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Search Modal</ion-title>
-    <ion-searchbar debounce="500" showCancelButton placeholder="Search names and descriptions" (ionChange)="setSearchViewItems($event)"></ion-searchbar>
+    <ion-title>
+      Search
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="primary" (click)="closeModal()">
+        Done
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar 
+      debounce="300" 
+      showCancelButton 
+      placeholder="Search names and descriptions" 
+      (ionChange)="setSearchViewItems($event)">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -9,8 +23,15 @@
   <ion-list>
     <den-list-item
       [item]="searchItem.item" 
-      *ngFor="let searchItem  of searchViewItems"
+      *ngFor="let searchItem of searchViewItems"
       (click)="itemClicked(searchItem)">
     </den-list-item>
   </ion-list>
+  
+  <div class="empty-message" *ngIf="emptyMessage">
+    {{ emptyMessage }}
+  </div>
+  <div class="spinner-container" *ngIf="loading">
+    <ion-spinner></ion-spinner>
+  </div>
 </ion-content>

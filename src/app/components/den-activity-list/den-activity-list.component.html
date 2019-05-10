@@ -4,7 +4,7 @@
     Activity
   </div>
   <div *ngIf="activityList.length === 0" class="empty-message">
-    Nothing has happened yet
+    Activity will appear here as people join and add items to the den.
   </div>
   <den-activity-item [activityItem]="activity" *ngFor="let activity of activityList">
   </den-activity-item>

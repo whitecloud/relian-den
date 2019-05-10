@@ -12,6 +12,8 @@ import { ModalController } from '@ionic/angular';
 })
 export class SearchModalPage implements OnInit {
 
+  loading: boolean = false;
+  emptyMessage: string = 'Find anything by searching above';
   searchViewItems : Item[];
   $subscription: Subscription;
 
@@ -30,17 +32,27 @@ export class SearchModalPage implements OnInit {
     }
     if (!text) {
       this.searchViewItems = [];
+      this.emptyMessage = 'Find anything by searching above';
     } else {
+      delete this.emptyMessage;
+      this.loading = true;
       this.$subscription = this.searchService.findItems($event.detail.value).subscribe(items => {
         this.searchViewItems = items;
+        if (items.length === 0) {
+          this.emptyMessage = 'No items match your search';
+        }
+        this.loading = false;
       });
     }
   }
 
   itemClicked(searchItem) {
     if (['page','detail'].includes(searchItem.item.type)) {
-      this.modalCtrl.dismiss();
+      this.closeModal();
     }
   }
 
+  closeModal() {
+    this.modalCtrl.dismiss();
+  }
 }
