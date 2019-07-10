@@ -1,3 +1,7 @@
+ion-content {
+  --overflow: hidden;
+}
+
 ion-title {
   cursor: pointer;
   padding: 0;
@@ -14,6 +18,14 @@ ion-title {
   position: relative;
   display: flex;
   justify-content: center;
+  overflow: hidden;
+
+  den-page,
+  den-favorites-list,
+  den-activity-list {
+    max-height: calc(100vh - 64px);
+    overflow: scroll;
+  }
 
   den-favorites-list,
   den-activity-list {
@@ -67,8 +79,10 @@ ion-title {
     bottom: 0;
   }
 
-  .home-container {
-    margin-bottom: 80px;
+  den-page,
+  den-favorites-list,
+  den-activity-list {
+    padding-bottom: 80px;
   }
 }
 
